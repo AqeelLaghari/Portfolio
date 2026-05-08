@@ -15,6 +15,7 @@ const projects = [
     github: "#",
     demo: "#",
     gradient: "from-blue-600 to-cyan-500",
+    video: "/pics/Jobify.mp4",
   },
   {
     title: "Movie Recommendation System",
@@ -85,11 +86,21 @@ export function Projects() {
               className="group"
             >
               <GlassCard className="h-full p-0 overflow-hidden flex flex-col group-hover:border-white/20 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
-                {/* Image Placeholder with Gradient */}
-                <div className={`h-48 w-full bg-gradient-to-br ${project.gradient} relative overflow-hidden flex items-center justify-center`}>
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
-                  <div className="absolute inset-0 backdrop-blur-[2px] group-hover:backdrop-blur-none transition-all duration-500" />
-                  <h3 className="text-2xl font-bold text-white/80 tracking-wider mix-blend-overlay uppercase z-10 group-hover:scale-110 transition-transform duration-700">
+                {/* Image/Video Placeholder with Gradient */}
+                <div className={`h-56 w-full ${project.video ? 'bg-black' : `bg-gradient-to-br ${project.gradient}`} relative overflow-hidden flex items-center justify-center`}>
+                  {project.video && (
+                    <video 
+                      src={project.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-700"
+                    />
+                  )}
+                  {!project.video && <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500 z-10" />}
+                  <div className={`absolute inset-0 backdrop-blur-[2px] group-hover:backdrop-blur-none transition-all duration-500 z-10 ${project.video ? 'bg-gradient-to-t from-[#0B0F19] to-transparent opacity-80 group-hover:opacity-0' : ''}`} />
+                  <h3 className={`text-2xl font-bold text-white tracking-wider uppercase z-20 drop-shadow-lg transition-all duration-700 ${project.video ? 'group-hover:opacity-0 group-hover:scale-95' : 'group-hover:scale-110 mix-blend-overlay'}`}>
                     {project.title.split(" ")[0]}
                   </h3>
                 </div>
