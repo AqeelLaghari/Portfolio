@@ -40,6 +40,7 @@ const projects = [
     github: "#",
     demo: "#",
     gradient: "from-emerald-500 to-teal-400",
+    video: "/pics/PowerBi.mp4",
   },
 ];
 
