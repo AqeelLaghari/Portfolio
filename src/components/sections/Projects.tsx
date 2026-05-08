@@ -7,15 +7,14 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
 import { Server, Terminal, Play, X } from "lucide-react";
 
-type Project = {
+interface Project {
   title: string;
   shortTitle: string;
   description: string;
   tech: string[];
   gradient: string;
   video?: string;
-  demo?: string;
-};
+}
 
 const projects: Project[] = [
   {
@@ -113,13 +112,15 @@ export function Projects() {
               <GlassCard className="h-full p-0 overflow-hidden flex flex-col group-hover:border-white/20 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
                 {/* Media Section */}
                 <div
-                  className={`h-56 w-full ${project.video
-                      ? "bg-black cursor-pointer"
-                      : `bg-gradient-to-br ${project.gradient}`
-                    } relative overflow-hidden flex items-center justify-center`}
-                  onClick={() =>
-                    project.video && setSelectedVideo(project.video)
-                  }
+                  className={`h-56 w-full relative overflow-hidden flex items-center justify-center ${project.video
+                    ? "bg-black cursor-pointer"
+                    : `bg-gradient-to-br ${project.gradient}`
+                    }`}
+                  onClick={() => {
+                    if (project.video) {
+                      setSelectedVideo(project.video);
+                    }
+                  }}
                 >
                   {project.video && (
                     <video
@@ -150,18 +151,18 @@ export function Projects() {
 
                   <div
                     className={`absolute inset-0 backdrop-blur-[2px] group-hover:backdrop-blur-none transition-all duration-500 z-10 ${project.video
-                        ? "bg-gradient-to-t from-[#0B0F19] to-transparent opacity-80 group-hover:opacity-40"
-                        : ""
+                      ? "bg-gradient-to-t from-[#0B0F19] to-transparent opacity-80 group-hover:opacity-40"
+                      : ""
                       }`}
                   />
 
                   <h3
                     className={`text-2xl font-bold text-white tracking-wider uppercase z-20 drop-shadow-lg transition-all duration-700 ${project.video
-                        ? "group-hover:scale-105"
-                        : "group-hover:scale-110 mix-blend-overlay"
+                      ? "group-hover:scale-105"
+                      : "group-hover:scale-110 mix-blend-overlay"
                       }`}
                   >
-                    {project.shortTitle || project.title.split(" ")[0]}
+                    {project.shortTitle}
                   </h3>
                 </div>
 
