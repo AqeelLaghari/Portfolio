@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0f19; /* Dark modern theme */
+  --foreground: #e2e8f0; /* Soft light text */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Custom colors matching the design brief */
+  --color-accent-blue: #3b82f6;
+  --color-accent-violet: #8b5cf6;
+  --color-accent-cyan: #06b6d4;
+  
+  --color-card-bg: rgba(255, 255, 255, 0.03);
+  --color-card-border: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Base selection color */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #fff;
+}

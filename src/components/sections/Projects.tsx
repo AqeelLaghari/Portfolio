@@ -1,0 +1,128 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { GlassCard } from "@/components/ui/GlassCard";
+import { Badge } from "@/components/ui/Badge";
+import { ExternalLink, Server, Terminal } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
+const projects = [
+  {
+    title: "Jobify — AI Resume & Job App",
+    description: "Upload resumes and find relevant jobs using AI. Features resume analysis and recommendation systems using advanced NLP techniques.",
+    tech: ["Flutter", "Flask", "TF-IDF", "Cosine Similarity"],
+    github: "#",
+    demo: "#",
+    gradient: "from-blue-600 to-cyan-500",
+  },
+  {
+    title: "Movie Recommendation System",
+    description: "Personalized recommendation engine utilizing similarity algorithms to suggest movies based on user preferences and watch history.",
+    tech: ["Python", "Pandas", "Scikit-learn"],
+    github: "#",
+    demo: "#",
+    gradient: "from-violet-600 to-fuchsia-500",
+  },
+  {
+    title: "Anime Face GAN",
+    description: "Deep learning model (DCGAN) built to generate anime-style faces from random noise, served through a custom web interface.",
+    tech: ["PyTorch", "GANs", "Flask"],
+    github: "#",
+    demo: "#",
+    gradient: "from-rose-500 to-orange-500",
+  },
+  {
+    title: "Power BI Analytics Dashboard",
+    description: "Interactive corporate dashboards featuring complex KPIs, DAX measures, and professional data storytelling for business insights.",
+    tech: ["Power BI", "DAX", "Data Modeling"],
+    github: "#",
+    demo: "#",
+    gradient: "from-emerald-500 to-teal-400",
+  },
+];
+
+export function Projects() {
+  return (
+    <section id="projects" className="py-24 relative overflow-hidden">
+      {/* Projects Specific Floating Shapes */}
+      <motion.div
+        animate={{ y: [0, 50, 0], opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-[10%] left-[5%] text-blue-500/10 pointer-events-none"
+      >
+        <Server size={180} strokeWidth={1} />
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, -40, 0], rotate: [0, 5, -5, 0], opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-[20%] right-[5%] text-violet-500/10 pointer-events-none"
+      >
+        <Terminal size={150} strokeWidth={1} />
+      </motion.div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <SectionHeading 
+            title="Featured Projects" 
+            subtitle="A selection of my recent work in Data Science, ML, and App Development."
+          />
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group"
+            >
+              <GlassCard className="h-full p-0 overflow-hidden flex flex-col group-hover:border-white/20 transition-all duration-500 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+                {/* Image Placeholder with Gradient */}
+                <div className={`h-48 w-full bg-gradient-to-br ${project.gradient} relative overflow-hidden flex items-center justify-center`}>
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" />
+                  <div className="absolute inset-0 backdrop-blur-[2px] group-hover:backdrop-blur-none transition-all duration-500" />
+                  <h3 className="text-2xl font-bold text-white/80 tracking-wider mix-blend-overlay uppercase z-10 group-hover:scale-110 transition-transform duration-700">
+                    {project.title.split(" ")[0]}
+                  </h3>
+                </div>
+
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 mb-6 flex-grow leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tech.map((tech) => (
+                      <Badge key={tech} variant="glow">{tech}</Badge>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-4 pt-4 border-t border-white/10 mt-auto">
+                    <a 
+                      href={project.demo}
+                      className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium"
+                    >
+                      <ExternalLink size={18} />
+                      View URL
+                    </a>
+                  </div>
+                </div>
+              </GlassCard>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
