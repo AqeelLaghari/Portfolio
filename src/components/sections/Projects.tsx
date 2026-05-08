@@ -19,18 +19,18 @@ const projects = [
   {
     title: "Movie Recommendation System",
     shortTitle: "MOVIE REC",
-    description: "Personalized recommendation engine utilizing similarity algorithms to suggest movies based on user preferences and watch history.",
+    description: "Personalized recommendation engine utilizing similarity algorithms to suggest movies based on given user input preferences.",
     tech: ["Python", "Pandas", "Scikit-learn"],
-    demo: "#",
     gradient: "from-violet-600 to-fuchsia-500",
+    video: "/pics/Movie Reccomentdation.mp4",
   },
   {
     title: "Anime Face GAN",
     shortTitle: "ANIME GAN",
     description: "Deep learning model (DCGAN) built to generate anime-style faces from random noise, served through a custom web interface.",
     tech: ["PyTorch", "GANs", "Flask"],
-    demo: "#",
     gradient: "from-rose-500 to-orange-500",
+    video: "/pics/DCGans.mp4",
   },
   {
     title: "Power BI Analytics Dashboard",
