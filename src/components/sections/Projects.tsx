@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Badge } from "@/components/ui/Badge";
-import { ExternalLink, Server, Terminal, Play, X } from "lucide-react";
+import { Server, Terminal, Play, X } from "lucide-react";
 
 const projects = [
   {
@@ -126,23 +126,11 @@ export function Projects() {
                     {project.description}
                   </p>
 
-                  <div className={`flex flex-wrap gap-2 ${project.demo ? 'mb-6' : 'mt-auto'}`}>
+                  <div className="flex flex-wrap gap-2 mt-auto pt-4">
                     {project.tech.map((tech) => (
                       <Badge key={tech} variant="glow">{tech}</Badge>
                     ))}
                   </div>
-
-                  {project.demo && (
-                    <div className="flex items-center gap-4 pt-4 border-t border-white/10 mt-auto">
-                      <a 
-                        href={project.demo}
-                        className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium"
-                      >
-                        <ExternalLink size={18} />
-                        View URL
-                      </a>
-                    </div>
-                  )}
                 </div>
               </GlassCard>
             </motion.div>
