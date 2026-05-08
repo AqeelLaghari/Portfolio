@@ -10,35 +10,33 @@ import { ExternalLink, Server, Terminal, Play, X } from "lucide-react";
 const projects = [
   {
     title: "Jobify — AI Resume & Job App",
+    shortTitle: "JOBIFY",
     description: "Upload resumes and find relevant jobs using AI. Features resume analysis and recommendation systems using advanced NLP techniques.",
     tech: ["Flutter", "Flask", "TF-IDF", "Cosine Similarity"],
-    github: "#",
-    demo: "#",
     gradient: "from-blue-600 to-cyan-500",
     video: "/pics/Jobify.mp4",
   },
   {
     title: "Movie Recommendation System",
+    shortTitle: "MOVIE REC",
     description: "Personalized recommendation engine utilizing similarity algorithms to suggest movies based on user preferences and watch history.",
     tech: ["Python", "Pandas", "Scikit-learn"],
-    github: "#",
     demo: "#",
     gradient: "from-violet-600 to-fuchsia-500",
   },
   {
     title: "Anime Face GAN",
+    shortTitle: "ANIME GAN",
     description: "Deep learning model (DCGAN) built to generate anime-style faces from random noise, served through a custom web interface.",
     tech: ["PyTorch", "GANs", "Flask"],
-    github: "#",
     demo: "#",
     gradient: "from-rose-500 to-orange-500",
   },
   {
     title: "Power BI Analytics Dashboard",
+    shortTitle: "POWER BI",
     description: "Interactive corporate dashboards featuring complex KPIs, DAX measures, and professional data storytelling for business insights.",
     tech: ["Power BI", "DAX", "Data Modeling"],
-    github: "#",
-    demo: "#",
     gradient: "from-emerald-500 to-teal-400",
     video: "/pics/PowerBi.mp4",
   },
@@ -116,7 +114,7 @@ export function Projects() {
 
                   <div className={`absolute inset-0 backdrop-blur-[2px] group-hover:backdrop-blur-none transition-all duration-500 z-10 ${project.video ? 'bg-gradient-to-t from-[#0B0F19] to-transparent opacity-80 group-hover:opacity-40' : ''}`} />
                   <h3 className={`text-2xl font-bold text-white tracking-wider uppercase z-20 drop-shadow-lg transition-all duration-700 ${project.video ? 'group-hover:scale-105' : 'group-hover:scale-110 mix-blend-overlay'}`}>
-                    {project.title.split(" ")[0]}
+                    {project.shortTitle || project.title.split(" ")[0]}
                   </h3>
                 </div>
 
@@ -128,21 +126,23 @@ export function Projects() {
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className={`flex flex-wrap gap-2 ${project.demo ? 'mb-6' : 'mt-auto'}`}>
                     {project.tech.map((tech) => (
                       <Badge key={tech} variant="glow">{tech}</Badge>
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-4 pt-4 border-t border-white/10 mt-auto">
-                    <a 
-                      href={project.demo}
-                      className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium"
-                    >
-                      <ExternalLink size={18} />
-                      View URL
-                    </a>
-                  </div>
+                  {project.demo && (
+                    <div className="flex items-center gap-4 pt-4 border-t border-white/10 mt-auto">
+                      <a 
+                        href={project.demo}
+                        className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 text-sm font-medium"
+                      >
+                        <ExternalLink size={18} />
+                        View URL
+                      </a>
+                    </div>
+                  )}
                 </div>
               </GlassCard>
             </motion.div>
